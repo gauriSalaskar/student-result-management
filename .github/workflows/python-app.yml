@@ -19,20 +19,20 @@ jobs:
           fetch-depth: 0
 
       - name: Display Success Message
-        shell: cmd
-        run: echo DevOps Practical Executed Successfully!
+        shell: bash
+        run: echo "DevOps Practical Executed Successfully!"
 
       - name: Install Requirements
-        shell: cmd
-        run: pip install -r requirements.txt
+        shell: bash
+        run: python3 -m pip install -r requirements.txt
 
       - name: Run Tests
-        shell: cmd
-        run: pytest -v
+        shell: bash
+        run: python3 -m pytest -v
 
       - name: Run Python Application
-        shell: cmd
-        run: python app.py
+        shell: bash
+        run: python3 app.py
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
