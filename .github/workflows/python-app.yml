@@ -22,9 +22,17 @@ jobs:
         shell: powershell
         run: Write-Output "DevOps Practical Executed Successfully!"
 
-      - name: List Repository Files
+      - name: Install Python Dependencies
         shell: powershell
-        run: Get-ChildItem
+        run: python -m pip install -r requirements.txt
+
+      - name: Run Pytest
+        shell: powershell
+        run: python -m pytest -v
+
+      - name: Run Python Application
+        shell: powershell
+        run: python app.py
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
