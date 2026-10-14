@@ -19,10 +19,12 @@ jobs:
           fetch-depth: 0
 
       - name: Display Success Message
-        run: echo "DevOps Practical Executed Successfully!"
+        shell: powershell
+        run: Write-Output "DevOps Practical Executed Successfully!"
 
       - name: List Repository Files
-        run: ls -la
+        shell: powershell
+        run: Get-ChildItem
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
