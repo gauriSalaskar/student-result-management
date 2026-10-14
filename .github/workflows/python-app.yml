@@ -1,41 +1,4 @@
 
-# name: DevOps Practical Workflow
-
-# on:
-#   push:
-#     branches:
-#       - main
-
-#   workflow_dispatch:
-
-# jobs:
-#   build:
-#     runs-on: self-hosted
-
-#     steps:
-#       - name: Checkout Repository
-#         uses: actions/checkout@v4
-#         with:
-#           fetch-depth: 0
-
-#       - name: Install Requirements
-#        # shell: bash
-#         run: pip install -r requirements.txt
-
-#       - name: Run Tests
-#         #shell: bash
-#         run: pytest -v
-
-#       - name: Run Python Application
-#      #   shell: bash
-#         run: python app.py
-
-#       - name: SonarQube Scan
-#         uses: SonarSource/sonarqube-scan-action@v5
-#         env:
-#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
 name: DevOps Practical Workflow
 
 on:
@@ -49,26 +12,27 @@ jobs:
   build:
     runs-on: self-hosted
 
-    defaults:
-      run:
-        shell: bash
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Display Success Message
-        run: echo "DevOps Practical Executed Successfully!"
-
+      - name: setup python
+        uses: actions/setup-python@v5
+        with: 
+             python-version: "3.12"
+             
       - name: Install Requirements
-        run: python -m pip install -r requirements.txt
+       # shell: bash
+        run: pip install -r requirements.txt
 
       - name: Run Tests
-        run: python -m pytest -v
+        #shell: bash
+        run: pytest -v
 
       - name: Run Python Application
+     #   shell: bash
         run: python app.py
 
       - name: SonarQube Scan
@@ -76,4 +40,3 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
