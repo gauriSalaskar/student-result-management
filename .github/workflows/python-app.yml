@@ -19,19 +19,19 @@ jobs:
           fetch-depth: 0
 
       - name: Display Success Message
-        shell: bash
+#shell: bash
         run: echo "DevOps Practical Executed Successfully!"
 
       - name: Install Requirements
-        shell: bash
+       # shell: bash
         run: python3 -m pip install -r requirements.txt
 
       - name: Run Tests
-        shell: bash
+        #shell: bash
         run: python3 -m pytest -v
 
       - name: Run Python Application
-        shell: bash
+     #   shell: bash
         run: python3 app.py
 
       - name: SonarQube Scan
