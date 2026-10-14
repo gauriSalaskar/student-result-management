@@ -24,15 +24,15 @@ jobs:
 
       - name: Install Requirements
        # shell: bash
-        run: python3 -m pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Run Tests
         #shell: bash
-        run: python3 -m pytest -v
+        run: pytest -v
 
       - name: Run Python Application
      #   shell: bash
-        run: python3 app.py
+        run: python app.py
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
